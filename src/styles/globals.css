@@ -2,11 +2,126 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body {
-  font-family: "Inter", sans-serif;
-  line-height: 1.6;
+/* Highlight Hover Effect */
+.highlight {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease-in-out;
 }
+
+.highlight:hover {
+  color: #f472b6;
+}
+
+.highlight:hover::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #f472b6;
+  transition: width 0.3s ease-in-out;
+}
+
+.highlight:hover::after {
+  width: 100%;
+}
+
+/* Focus Styles for Inputs */
+input:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(99, 102, 241, 0.5);
+  border-color: #6366f1;
+}
+
+/* Button Hover Effect */
+button:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Pulsating Background Animation */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+/* Apply Animation */
+.animate-pulse {
+  animation: pulse 6s infinite;
+}
+
+/* Social Icon Hover Effect */
+a:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Decorative Background Animation */
+@keyframes pulse-gradient {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* Apply Background Animation */
+.animate-pulse {
+  animation: pulse-gradient 6s infinite;
+}
+
+/* Card Hover Effect */
 .card:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
-} */
+}
+
+/* Font and Body Settings */
+/* Uncomment if needed:
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+}
+*/
+
+/* Additional Spacing for Fixed Headers */
+.mt-40 {
+  margin-top: 10rem;
+}
+/* Social Icon Glow Effect */
+a.relative.group span {
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  background: transparent;
+  border-radius: 50%;
+  z-index: -1;
+}
+/* Gradient Glow Effect on Buttons */
+button.group:hover span.absolute {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* SVG Icon Scaling */
+button.group:hover svg {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
