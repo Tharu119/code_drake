@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function Services() {
   return (
@@ -13,7 +13,7 @@ export default function Services() {
       className="py-20 bg-gray-100"
     >
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-indigo-600 mb-10">
+        <h2 className="text-4xl font-bold text-center text-[#020202] mb-10">
           Our Services
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
