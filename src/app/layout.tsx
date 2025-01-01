@@ -38,9 +38,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 
 
-
-
-
         {/* Main Content */}
         <motion.main
           initial={{ opacity: 0 }}

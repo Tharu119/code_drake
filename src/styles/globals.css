@@ -389,3 +389,89 @@ body {
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Hero Section Styles */
+.btn-premium {
+  background: linear-gradient(90deg, #4f46e5, #9333ea);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-premium:hover {
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.8);
+  transform: scale(1.05);
+}
+
+/* Floating Ball Glow Effect */
+.blur-xl {
+  filter: blur(8px);
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+/* Gradient Shift Animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradientShift {
+  animation: gradientShift 10s ease infinite;
+}
+/* Star Shape */
+.star-shape {
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+/* Glow Effect for Stars */
+.star-shape {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+/* Dark Premium Gradient */
+.bg-dark-gradient {
+  background: linear-gradient(135deg, #000000, #1a1a1a, #333333);
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+}
+
+/* Gradient Shift Animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Neon Text Glow */
+.text-neon {
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6),
+    0 0 30px rgba(0, 255, 255, 0.4);
+}
+
+/* Floating Blur Effect */
+.blur-lg {
+  filter: blur(12px);
+}
+
+/* Button Hover Transition */
+button:hover {
+  transition: all 0.3s ease;
+  transform: scale(1.1);
+}
+

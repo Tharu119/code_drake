@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
-import { motion } from "framer-motion";
-
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,27 +40,28 @@ export default function Header() {
     }
   };
 
-  
-  
-
   return (
-    <header
-      className={`${
-        isScrolled
-          ? "fixed top-0 left-0 w-full bg-dark-gradient bg-opacity-90 backdrop-blur-lg animate-navbarBlur transition-all duration-700 ease-in-out z-50 shadow-lg"
-          : "relative bg-dark-gradient bg-opacity-100 transition-all duration-700 ease-in-out z-50 shadow-lg"
+    <motion.header
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        backdropFilter: isScrolled ? "blur(10px)" : "blur(0px)",
+        backgroundColor: isScrolled
+          ? "rgba(0, 0, 0, 0.8)"
+          : "rgba(0, 0, 0, 0.3)",
+      }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className={`fixed top-0 left-0 w-full transition-all duration-700 ease-in-out z-50 ${
+        isScrolled ? "shadow-md" : ""
       }`}
     >
-   {/* Animated Background */}
-   <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-10 blur-lg"></div>
-
-  {/* Navigation Bar */}
-  <motion.div
-    initial={{ y: -50, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
-    className="flex items-center justify-between container mx-auto py-4 px-8"
-  >
+      {/* Navigation Bar */}
+      <motion.div
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
+        className="flex items-center justify-between container mx-auto py-4 px-8"
+      >
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -144,18 +144,7 @@ export default function Header() {
             )}
           </button>
         </motion.div>
-
-        
       </motion.div>
-        {/* Animated Divider */}
-            <motion.div
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ delay: 0.3, duration: 1.2, ease: "easeInOut" }}
-                className="relative mx-auto mt-4 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full overflow-hidden"
-            >
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-blue-400 opacity-80 animate-gradientMove"></div>
-            </motion.div>
-    </header>
+    </motion.header>
   );
 }
