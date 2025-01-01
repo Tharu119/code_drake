@@ -362,3 +362,30 @@ button.group:hover svg {
   color: #fff;
 }
 
+/* Glow Animation */
+@keyframes glowingButton {
+  0% { box-shadow: 0 0 5px #4f46e5; }
+  50% { box-shadow: 0 0 15px #9333ea; }
+  100% { box-shadow: 0 0 5px #4f46e5; }
+}
+
+.btn-premium:hover {
+  animation: glowingButton 1s infinite;
+}
+
+
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+.dark {
+  --background-color: #1a202c;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
