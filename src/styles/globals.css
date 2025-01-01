@@ -29,7 +29,7 @@
   width: 100%;
 }
 
-/* Focus Styles for Inputs */
+/* Input Focus Styles */
 input:focus,
 textarea:focus {
   outline: none;
@@ -55,7 +55,6 @@ button:hover {
   }
 }
 
-/* Apply Animation */
 .animate-pulse {
   animation: pulse 6s infinite;
 }
@@ -78,7 +77,6 @@ a:hover {
   }
 }
 
-/* Apply Background Animation */
 .animate-pulse {
   animation: pulse-gradient 6s infinite;
 }
@@ -89,18 +87,136 @@ a:hover {
   transition: transform 0.3s ease-in-out;
 }
 
-/* Font and Body Settings */
-/* Uncomment if needed:
-body {
-  font-family: "Inter", sans-serif;
-  line-height: 1.6;
+/* Gradient Glow Animation */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(245, 101, 235, 0.5), 0 0 30px rgba(245, 101, 235, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(101, 148, 245, 0.7), 0 0 50px rgba(245, 101, 235, 0.7);
+  }
 }
-*/
+
+.animate-glow {
+  animation: glow 2s infinite alternate;
+}
+
+/* Dark Gradient Background */
+.bg-dark-gradient {
+  background: linear-gradient(90deg, #1a202c, #2d3748, #4a5568);
+}
+
+/* Navigation Link Hover Effect */
+.nav-link {
+  position: relative;
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background-color: #f472b6;
+  transform: translateX(-50%);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #f472b6;
+  text-shadow: 0 0 10px #f472b6;
+}
+
+.nav-link:hover::before {
+  width: 100%;
+}
+
+/* Navbar Blur Animation */
+@keyframes navbarBlur {
+  0% {
+    backdrop-filter: blur(0px);
+    transform: translateY(-5px);
+  }
+  100% {
+    backdrop-filter: blur(15px);
+    transform: translateY(0);
+  }
+}
+
+.animate-navbarBlur {
+  animation: navbarBlur 1s ease-in-out forwards;
+}
+
+/* Navbar Unblur Animation */
+@keyframes navbarUnblur {
+  0% {
+    backdrop-filter: blur(15px);
+    transform: translateY(0);
+  }
+  100% {
+    backdrop-filter: blur(0px);
+    transform: translateY(-5px);
+  }
+}
+
+.animate-navbarUnblur {
+  animation: navbarUnblur 1s ease-in-out forwards;
+}
+
+/* Gradient Moving Animation */
+@keyframes gradientMove {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-gradientMove {
+  animation: gradientMove 3s linear infinite;
+  background: linear-gradient(90deg, rgba(255, 105, 180, 0.8), rgba(75, 0, 130, 0.8));
+  background-size: 200%;
+}
+
+/* Glow Animation for Divider */
+@keyframes dividerGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.7), 0 0 40px rgba(0, 150, 255, 0.9);
+  }
+}
+
+.animate-dividerGlow {
+  animation: dividerGlow 3s infinite alternate;
+}
+
+/* Tech Glow Animation */
+@keyframes techGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.7), 0 0 40px rgba(0, 150, 255, 0.9);
+  }
+}
+
+.animate-techGlow {
+  animation: techGlow 2s infinite alternate;
+}
 
 /* Additional Spacing for Fixed Headers */
 .mt-40 {
   margin-top: 10rem;
 }
+
 /* Social Icon Glow Effect */
 a.relative.group span {
   display: block;
@@ -113,6 +229,7 @@ a.relative.group span {
   border-radius: 50%;
   z-index: -1;
 }
+
 /* Gradient Glow Effect on Buttons */
 button.group:hover span.absolute {
   opacity: 1;
@@ -123,5 +240,125 @@ button.group:hover span.absolute {
 button.group:hover svg {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out;
+}
+
+/* Responsive Utilities */
+
+/* General Spacing Adjustments for Smaller Screens */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+    padding: 0 1rem;
+  }
+
+  .flex {
+    flex-wrap: wrap;
+  }
+
+  .gap-10 {
+    gap: 5px;
+  }
+}
+
+/* Adjust Header for Smaller Screens */
+@media (max-width: 768px) {
+  .nav-link {
+    font-size: 14px;
+  }
+
+  .text-base {
+    font-size: 12px;
+  }
+
+  .h-14 {
+    height: 10px;
+  }
+}
+
+/* Adjust Footer for Smaller Screens */
+@media (max-width: 480px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium Gradient Background */
+.bg-premium-gradient {
+  background: linear-gradient(135deg, #1e3a8a, #4f46e5, #9333ea);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* Gradient Animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Neon Glow Effect */
+.neon-glow {
+  color: #ffffff;
+  text-shadow: 0 0 10px #38bdf8, 0 0 20px #9333ea, 0 0 30px #9333ea;
+}
+
+.neon-glow:hover {
+  text-shadow: 0 0 20px #38bdf8, 0 0 30px #9333ea, 0 0 40px #9333ea;
+}
+
+/* Button with Neon Hover Effect */
+.btn-premium {
+  background: linear-gradient(90deg, #9333ea, #4f46e5);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-premium:hover {
+  background: linear-gradient(90deg, #4f46e5, #9333ea);
+  box-shadow: 0 0 10px #38bdf8, 0 0 30px #9333ea;
+}
+
+/* Input Field Glow */
+.input-glow {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-glow:focus {
+  border-color: #9333ea;
+  box-shadow: 0 0 10px #38bdf8, 0 0 20px #9333ea;
+}
+
+/* Header and Text Glow */
+.header-glow {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 10px #4f46e5, 0 0 20px #9333ea, 0 0 30px #9333ea;
+}
+
+/* Card Hover Effect */
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+}
+
+/* Footer Gradient Overlay */
+.footer-gradient {
+  background: linear-gradient(90deg, #1e3a8a, #9333ea);
+  color: #fff;
 }
 

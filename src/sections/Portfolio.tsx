@@ -1,5 +1,6 @@
 "use client";
 
+import BounceEffect from "../animations/BounceEffect";
 import { motion } from "framer-motion";
 
 const portfolioItems = [
@@ -40,28 +41,25 @@ export default function Portfolio() {
       className="py-20 bg-gradient-to-b from-gray-100 to-gray-300 text-gray-800 flex flex-col items-center min-h-screen relative overflow-hidden"
     >
       {/* Decorative Background Elements */}
-      <div className="absolute top-10 left-10 w-40 h-40 bg-indigo-200 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-pulse"></div>
-      <div className="absolute top-32 right-10 w-48 h-48 bg-pink-300 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-pulse"></div>
-      <div className="absolute bottom-20 left-20 w-32 h-32 bg-yellow-300 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-pulse"></div>
+      <div className="absolute top-10 left-10 w-40 h-40 bg-indigo-300 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-pulse"></div>
+      <div className="absolute top-32 right-10 w-48 h-48 bg-blue-400 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-pulse"></div>
+      <div className="absolute bottom-20 left-20 w-32 h-32 bg-purple-300 rounded-full mix-blend-multiply blur-3xl opacity-50 animate-pulse"></div>
 
       {/* Section Title */}
-      <motion.h2
-        initial={{ opacity: 0, y: -50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, type: "spring", stiffness: 100 }}
-        className="text-4xl font-bold text-[#020202] mb-12 relative z-10"
-      >
+      <h2 className="text-5xl font-bold text-center text-[#1A202C] mb-12 relative z-10">
         Our Portfolio
-      </motion.h2>
+      </h2>
 
-      {/* Description */}
+      {/* Description with Hover Animation */}
       <motion.p
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2, duration: 1 }}
-        className="text-lg text-center max-w-3xl text-gray-600 mb-12 relative z-10"
+        whileHover={{
+          scale: 1.05, // Slight zoom effect
+          color: "#2C5282", // Premium blue color
+          backgroundColor: "#EDF2F7", // Light gray-blue background
+          boxShadow: "0 4px 15px rgba(44, 82, 130, 0.2)", // Subtle shadow
+        }}
+        transition={{ duration: 0.3 }}
+        className="text-lg text-center max-w-3xl text-gray-600 mb-12 relative z-10 px-4 py-2 rounded-lg shadow-sm transition-all"
       >
         Take a look at some of our recent projects showcasing our expertise and
         commitment to excellence.
@@ -70,36 +68,37 @@ export default function Portfolio() {
       {/* Portfolio Items */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl px-4 relative z-10">
         {portfolioItems.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.2, duration: 0.8, type: "spring" }}
-            className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105"
-          >
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="p-6 bg-white">
-              <h3 className="text-xl font-semibold text-[#020202] group-hover:text-indigo-600 transition-colors duration-300">
-                {item.title}
-              </h3>
-              <p className="text-gray-600 mb-4">{item.description}</p>
-              <a
-                href={item.link}
-                className="inline-block text-indigo-600 font-medium hover:text-indigo-800 transition-colors duration-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Project
-              </a>
+          <BounceEffect key={index}>
+            <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-transform bg-gradient-to-r from-gray-200 via-white to-gray-200">
+              {/* Image with Hover Effect */}
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+
+              {/* Content Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              {/* Text Content */}
+              <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:translate-y-0 translate-y-full transition-transform duration-500">
+                <h3 className="text-xl font-semibold text-white group-hover:text-indigo-400 transition-colors duration-300">
+                  {item.title}
+                </h3>
+                <p className="text-gray-300 mb-4 group-hover:text-gray-100 transition-colors duration-300">
+                  {item.description}
+                </p>
+                <a
+                  href={item.link}
+                  className="inline-block text-indigo-400 font-medium hover:text-indigo-200 transition-colors duration-300 underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Project
+                </a>
+              </div>
             </div>
-            {/* Overlay Effect */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
-          </motion.div>
+          </BounceEffect>
         ))}
       </div>
     </section>
