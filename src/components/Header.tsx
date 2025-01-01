@@ -145,6 +145,15 @@ export default function Header() {
           </button>
         </motion.div>
       </motion.div>
+            {/* Animated Divider */}
+            <motion.div
+        initial={{ width: "0%" }}
+        animate={{ width: "100%" }}
+        transition={{ delay: 0.3, duration: 1.2, ease: "easeInOut" }}
+        className="relative mx-auto mt-4 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-blue-400 opacity-80 animate-gradientMove"></div>
+      </motion.div>
     </motion.header>
   );
 }
