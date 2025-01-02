@@ -34,10 +34,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Header />
 
 
-
-
-
-
         {/* Main Content */}
         <motion.main
           initial={{ opacity: 0 }}
